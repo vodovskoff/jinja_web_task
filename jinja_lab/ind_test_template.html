@@ -1,0 +1,30 @@
+<body>
+ <p>
+ Привет,
+ {% if user[3] == "ж" %}
+ студентка
+ {% else %}
+ студент
+ {% endif %}
+ <em style="color: green">{{add_spaces(user[0])}}!</em>
+ </p>
+ <p>
+ Ваша образовательная программа {{user[1]}}.
+ </p>
+ <p>
+     {% macro render_list(list) %}
+     {% set n = len(list) %}
+     {% for i in range(n) %}
+         {% if i == n - 1 %}
+             {{list[i]}}.
+         {% else %}
+             {{list[i]}},
+         {% endif %}
+     {% endfor %}
+{% endmacro %}
+ {% set n = len(user[2]) %}
+     Вы изучаете {{n}} {{discs(n)}}:<br>
+     {{ render_list(user[2]) }}
+
+ </p>
+ </body>
